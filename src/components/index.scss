@@ -1,0 +1,82 @@
+
+// error colors
+$errorBorder: rgb(106 11 0 / 32%);
+$errorBg:rgb(180 36 36 / 15%);
+$errorColor:#ef8d8dfa;
+
+// success colors
+$successBorderColor: rgba(39, 146, 64, 0.32);
+$successBg: rgba(22, 239, 73, 0.15);
+$successColor: #4c8f58;
+
+// tips & tricks alert
+$tipsBorderColor: rgba(51, 171, 192, 0.745);
+$tipsBg: rgba(73, 203, 225, 0.15);
+$tipsColor: #176b76;
+
+// note alert
+$noteBorderColor: rgb(133 100 4 / 32%);
+$noteBg: rgba(221, 179, 40, 0.15);
+$noteColor: #c29630;
+
+//upgrade your plan alert
+$upgradeBorder: rgba(137, 169, 195, 0.32);
+$upgradeBg: rgba(150, 33, 33, 0.15);
+$upgradeColor: #203241;
+
+
+
+
+@mixin alert($name, $bgColor, $borderColor, $color) {
+    .#{$name}{
+        border:2px dotted $borderColor;
+        width:60%;
+        margin:0 auto;
+        background:$bgColor;
+        border-radius: 10px;
+        padding:10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        margin-bottom: 1.2rem;
+        .alert-header{
+            display:flex;
+            align-items: center;
+            justify-content: space-between;
+            .close{
+                cursor:pointer;
+                color:$color;
+    
+            }
+            .alert-title{
+                display: flex;
+                align-items: center;
+                h4{
+                    color:$color;
+                    font-size:1.2rem;
+                }
+    
+                .icon{ 
+                    margin-right:10px;
+                    margin-top:10px;
+                    color:$color;
+                }
+            }
+        }
+        p{
+            color:$color;
+            font-size: 1.2rem;
+            text-align: left;
+            margin-top:15px;
+        }
+    }
+    
+    
+}
+
+@include alert("alert-danger", $errorBg, $errorBorder, $errorColor);
+@include alert("alert-tips", $tipsBg, $tipsBorderColor, $tipsColor);
+@include alert("alert-success", $successBg, $successBorderColor, $successColor);
+@include alert("alert-note", $noteBg, $noteBorderColor, $noteColor);
+@include alert("alert-upgrade", $upgradeBg, $upgradeBorder, $upgradeColor);
